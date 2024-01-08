@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-check-sample',
@@ -11,7 +11,8 @@ export class CheckSampleComponent implements
   AfterContentChecked,
   AfterContentInit,
   AfterViewChecked,
-  AfterViewInit
+  AfterViewInit,
+  OnDestroy
 {
 
   units:number = 0
@@ -26,13 +27,7 @@ export class CheckSampleComponent implements
     this.units -= 1
   }
 
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
-  }
-
-  ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked');
-  }
+  //Checked -> Content -> View
 
   ngAfterContentInit(): void {
     console.log('ngAfterContentInit');
@@ -40,6 +35,14 @@ export class CheckSampleComponent implements
 
   ngAfterContentChecked(): void {
     console.log('ngAfterContentChecked');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit');
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('ngAfterViewChecked');
   }
 
   ngDoCheck(): void {
@@ -50,4 +53,7 @@ export class CheckSampleComponent implements
     console.log('ngOnInit');
   }
 
+  ngOnDestroy(): void {
+    console.log('OnDestroy')
+  }
 }
